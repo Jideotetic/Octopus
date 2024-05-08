@@ -1,3 +1,5 @@
+import { Form } from "react-router-dom";
+
 const VerifyOTP = () => {
   return (
     <>
@@ -9,7 +11,7 @@ const VerifyOTP = () => {
           <p className="text-sm text-[#2A303C]">
             Enter the 6 digit verification code that was sent to your email:
           </p>
-          <form action="" method="post" className="mt-6 flex flex-col gap-5">
+          <Form action="." method="post" className="mt-6 flex flex-col gap-5">
             <div className="flex justify-center">
               <input
                 type="text"
@@ -55,7 +57,7 @@ const VerifyOTP = () => {
             >
               Sign In
             </button>
-          </form>
+          </Form>
         </div>
       </div>
     </>

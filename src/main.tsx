@@ -6,7 +6,10 @@ import Root from "./routes/Root";
 import Login from "./routes/Login";
 import ForgotPassword from "./routes/ForgotPassword";
 import VerifyOTP from "./routes/VerifyOTP";
+import CreateNewPassword from "./routes/CreateNewPassword";
 import forgotPasswordAction from "./actions/forgotPasswordAction";
+import verifyOTPAction from "./actions/verifyOTPAction";
+import createNewPasswordAction from "./actions/createNewPasswordAction";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +28,12 @@ const router = createBrowserRouter([
       {
         path: "verify-otp",
         element: <VerifyOTP />,
+        action: verifyOTPAction,
+      },
+      {
+        path: "create-new-password",
+        element: <CreateNewPassword />,
+        action: createNewPasswordAction,
       },
     ],
   },

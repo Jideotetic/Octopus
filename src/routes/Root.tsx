@@ -1,18 +1,20 @@
-import { Outlet } from "react-router-dom";
-// import imgUrl from "/accionmfb-logo.png";
+import { Outlet, Link } from "react-router-dom";
+import imgUrl from "/accionmfb-logo.png";
 import accionMfbLogoUrl from "/accionmfb-logo.png";
 
 const Root = () => {
   return (
     <>
-      <div className="grid-cols-rootLayout mx-auto grid h-screen w-full max-w-[1440px]">
-        <div className="bg-octopusBackgroundImage flex h-full flex-col justify-between bg-cover bg-no-repeat px-[40px] pb-4 pt-8 text-white">
+      <div className="mx-auto grid h-screen w-full max-w-[1440px] grid-cols-rootLayout">
+        <div className="flex h-full flex-col justify-between bg-octopusBackgroundImage bg-cover bg-no-repeat px-[40px] pb-4 pt-8 text-white">
           <header className="flex flex-col gap-1">
-            <h1 className="font-arbutus text-4xl">Octopus</h1>
+            <h1 className="font-arbutus text-4xl">
+              <Link to="/">Octopus</Link>
+            </h1>
             <p className="text-xs font-medium text-[#F9F7F0]">By AccionMFB</p>
           </header>
-          <div className="flex flex-col gap-6">
-            {/* <img src={imgUrl} alt="" className="h-auto w-full" /> */}
+          <div className="flex flex-col gap-10">
+            <img src={imgUrl} alt="" className="h-auto w-full" />
             <ul className="list-disc pl-4">
               <li>Monitoring</li>
               <li>Management</li>
@@ -24,7 +26,7 @@ const Root = () => {
           </footer>
         </div>
 
-        <div className="bg-accionBackgroundImage h-full bg-cover bg-no-repeat px-[20px] pb-4 pt-8">
+        <div className="h-full bg-accionBackgroundImage bg-cover bg-no-repeat pb-4 pr-[30px] pt-8">
           <div className="flex justify-end">
             <img src={accionMfbLogoUrl} alt="logo" className="h-auto w-20" />
           </div>

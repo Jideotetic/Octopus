@@ -5,6 +5,8 @@ import "./index.css";
 import Root from "./routes/Root";
 import Login from "./routes/Login";
 import ForgotPassword from "./routes/ForgotPassword";
+import VerifyOTP from "./routes/VerifyOTP";
+import forgotPasswordAction from "./actions/forgotPasswordAction";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,11 @@ const router = createBrowserRouter([
       {
         path: "forgot-password",
         element: <ForgotPassword />,
+        action: forgotPasswordAction,
+      },
+      {
+        path: "verify-otp",
+        element: <VerifyOTP />,
       },
     ],
   },

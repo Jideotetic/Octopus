@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 
 const ForgotPassword = () => {
   return (
@@ -12,7 +12,7 @@ const ForgotPassword = () => {
             Enter the email associated with your account. We will send you a
             verification code
           </p>
-          <form action="" method="post" className="mt-6 flex flex-col gap-5">
+          <Form action="." method="post" className="mt-6 flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="email"
@@ -37,7 +37,7 @@ const ForgotPassword = () => {
             >
               Continue
             </button>
-          </form>
+          </Form>
         </div>
       </div>
     </>

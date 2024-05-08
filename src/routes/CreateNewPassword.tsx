@@ -1,14 +1,17 @@
-import { Link, Form } from "react-router-dom";
+import { Form } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CreateNewPassword = () => {
   return (
     <>
+      <ToastContainer />
       <div className="flex h-[calc(100vh-100.21px)] flex-col items-center justify-center">
         <div className="w-full max-w-[430px] rounded-2xl bg-white p-8 shadow">
-          <h2 className="mb-1 text-2xl font-bold text-[#2A303C]">
+          <h2 className="mb-2 text-2xl font-medium text-[#2A303C]">
             Create a new password
           </h2>
-          <p className="text-xs text-[#2A303C]">
+          <p className="text-sm text-[#2A303C]">
             Create a new password to continue. This password will be used to log
             into your account
           </p>
@@ -25,7 +28,10 @@ const CreateNewPassword = () => {
                 name="new-password"
                 id="new-password"
                 placeholder="Enter password"
-                className="form-input rounded-md border-neutral-300 placeholder:text-xs"
+                autoComplete="off"
+                required
+                minLength={8}
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -40,7 +46,10 @@ const CreateNewPassword = () => {
                 name="confirm-password"
                 id="confirm-password"
                 placeholder="Re-enter password"
-                className="form-input rounded-md border-neutral-300 placeholder:text-xs"
+                autoComplete="off"
+                required
+                minLength={8}
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />
             </div>
 

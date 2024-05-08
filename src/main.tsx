@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/Root";
 import Login from "./routes/Login";
@@ -11,11 +11,14 @@ import forgotPasswordAction from "./actions/forgotPasswordAction";
 import verifyOTPAction from "./actions/verifyOTPAction";
 import createNewPasswordAction from "./actions/createNewPasswordAction";
 import loginAction from "./actions/loginAction";
+import authenticationLoader from "./loaders/authenticationLoader";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    id: "root",
     element: <Root />,
+    loader: authenticationLoader,
     children: [
       {
         index: true,
@@ -36,6 +39,15 @@ const router = createBrowserRouter([
         path: "create-new-password",
         element: <CreateNewPassword />,
         action: createNewPasswordAction,
+      },
+      {
+        path: "dashboard",
+        element: (
+          <div className="flex flex-col items-center justify-center">
+            <p>Dashboard</p>
+            <Link to="/">Log out</Link>
+          </div>
+        ),
       },
     ],
   },

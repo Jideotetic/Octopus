@@ -13,7 +13,7 @@ const Root = () => {
             </h1>
             <p className="text-xs font-medium text-[#F9F7F0]">By AccionMFB</p>
           </header>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             <img src={octopusImageUrl} alt="" className="h-auto w-full" />
             <ul className="list-disc pl-4">
               <li>Monitoring</li>

@@ -1,15 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   return (
     <>
+      <ToastContainer />
       <div className="flex h-[calc(100vh-100.21px)] flex-col items-center justify-center">
-        <div className="w-full max-w-[390px] rounded-2xl bg-white p-8 shadow">
-          <h2 className="mb-1 text-2xl font-bold text-[#2A303C]">Welcome!</h2>
-          <p className="text-xs text-[#2A303C]">
+        <div className="w-full max-w-[430px] rounded-2xl bg-white p-8 shadow">
+          <h2 className="mb-1 text-2xl font-medium text-[#2A303C]">Welcome!</h2>
+          <p className="text-sm text-[#2A303C]">
             Please enter your credential to sign in!
           </p>
-          <form action="" method="post" className="mt-6 flex flex-col gap-5">
+          <Form action="." method="post" className="mt-6 flex flex-col gap-5">
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="email"
@@ -21,8 +24,10 @@ const Login = () => {
                 type="email"
                 name="email"
                 id="email"
+                autoComplete="off"
+                required
                 placeholder="Enter your email"
-                className="form-input rounded-md border-neutral-300 placeholder:text-xs"
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -37,7 +42,9 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Enter your password"
-                className="form-input rounded-md border-neutral-300 placeholder:text-xs"
+                minLength={8}
+                required
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />
             </div>
             <div className="flex justify-between">
@@ -46,7 +53,7 @@ const Login = () => {
                   type="checkbox"
                   name="remember"
                   id="remember"
-                  className="form-checkbox hover:focus:ring-none cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407]"
+                  className="hover:focus:ring-none form-checkbox cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407]"
                 />
                 <label htmlFor="remember" className="text-sm text-[#2A303C]">
                   Remember me
@@ -65,7 +72,7 @@ const Login = () => {
             >
               Sign In
             </button>
-          </form>
+          </Form>
         </div>
       </div>
     </>

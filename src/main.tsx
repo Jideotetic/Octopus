@@ -10,6 +10,7 @@ import CreateNewPassword from "./routes/CreateNewPassword";
 import forgotPasswordAction from "./actions/forgotPasswordAction";
 import verifyOTPAction from "./actions/verifyOTPAction";
 import createNewPasswordAction from "./actions/createNewPasswordAction";
+import loginAction from "./actions/loginAction";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Login />,
+        action: loginAction,
       },
       {
         path: "forgot-password",

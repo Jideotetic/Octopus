@@ -13,36 +13,16 @@ const VerifyOTP = () => {
           </p>
           <Form action="." method="post" className="mt-6 flex flex-col gap-5">
             <div className="flex justify-center">
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 rounded-s border-neutral-300 placeholder:text-xs"
-              />
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 border-neutral-300 placeholder:text-xs"
-              />
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 border-neutral-300 placeholder:text-xs"
-              />
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 border-neutral-300 placeholder:text-xs"
-              />
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 border-neutral-300 placeholder:text-xs"
-              />
-              <input
-                type="text"
-                name="otp"
-                className="form-input w-12 rounded-e border-neutral-300 placeholder:text-xs"
-              />
+              {Array(6)
+                .fill(0)
+                .map((_, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name="otp"
+                    className="form-input w-12 border-neutral-300 placeholder:text-xs  first:rounded-s last:rounded-e"
+                  />
+                ))}
             </div>
             <div className="flex justify-center gap-1">
               <p>Didn't get the code?</p>

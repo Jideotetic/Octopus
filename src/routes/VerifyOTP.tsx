@@ -4,8 +4,8 @@ const VerifyOTP = () => {
   return (
     <>
       <div className="flex h-[calc(100vh-100.21px)] flex-col items-center justify-center">
-        <div className="w-full max-w-[390px] rounded-2xl bg-white p-8 shadow">
-          <h2 className="mb-1 text-xl font-medium text-[#2A303C]">
+        <div className="w-full max-w-[430px] rounded-2xl bg-white p-8 shadow">
+          <h2 className="mb-2 text-2xl font-medium text-[#2A303C]">
             We sent a code to your email.
           </h2>
           <p className="text-sm text-[#2A303C]">

@@ -4,7 +4,7 @@ const CreateNewPassword = () => {
   return (
     <>
       <div className="flex h-[calc(100vh-100.21px)] flex-col items-center justify-center">
-        <div className="w-full max-w-[390px] rounded-2xl bg-white p-8 shadow">
+        <div className="w-full max-w-[430px] rounded-2xl bg-white p-8 shadow">
           <h2 className="mb-1 text-2xl font-bold text-[#2A303C]">
             Create a new password
           </h2>

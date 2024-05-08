@@ -1,3 +1,4 @@
+import formsPlugin from "@tailwindcss/forms";
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
@@ -7,9 +8,14 @@ export default {
         arbutus: ["Arbutus", "serif"],
       },
       gridTemplateColumns: {
-        rootLayout: "365px 1fr",
+        rootLayout: "1fr 2fr",
+      },
+      backgroundImage: {
+        octopusBackgroundImage:
+          "url('/src/assets/octopus-background-image.jpg')",
+        accionBackgroundImage: "url('/src/assets/accion-background-image.jpg')",
       },
     },
   },
-  plugins: [],
+  plugins: [formsPlugin],
 };

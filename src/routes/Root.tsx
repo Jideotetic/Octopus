@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
-import imgUrl from "/accionmfb-logo.png";
 import accionMfbLogoUrl from "/accionmfb-logo.png";
+import octopusImageUrl from "../assets/octopus.png";
 
 const Root = () => {
   return (
@@ -13,8 +13,8 @@ const Root = () => {
             </h1>
             <p className="text-xs font-medium text-[#F9F7F0]">By AccionMFB</p>
           </header>
-          <div className="flex flex-col gap-10">
-            <img src={imgUrl} alt="" className="h-auto w-full" />
+          <div className="flex flex-col gap-6">
+            <img src={octopusImageUrl} alt="" className="h-auto w-full" />
             <ul className="list-disc pl-4">
               <li>Monitoring</li>
               <li>Management</li>

@@ -1,8 +1,12 @@
+import { useEffect } from "react";
 import { Link, Form } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
+  useEffect(() => {
+    console.log(document.cookie);
+  }, []);
   return (
     <>
       <ToastContainer />
@@ -52,11 +56,11 @@ const Login = () => {
               <div className="flex items-center justify-center gap-2">
                 <input
                   type="checkbox"
-                  name="remember"
-                  id="remember"
-                  className="hover:focus:ring-none form-checkbox cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407]"
+                  name="remember-me"
+                  id="remember-me"
+                  className="focus:ring-none form-checkbox cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407] focus:ring-offset-0 focus:ring-offset-0"
                 />
-                <label htmlFor="remember" className="text-sm text-[#2A303C]">
+                <label htmlFor="remember-me" className="text-sm text-[#2A303C]">
                   Remember me
                 </label>
               </div>

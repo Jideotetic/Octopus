@@ -7,6 +7,7 @@ interface VerifyOTPProps {
   length?: number;
 }
 
+// Regex to check if the input enter is a valid number
 const DIGITS = new RegExp(/^\d+$/);
 
 const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
@@ -15,6 +16,7 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
 
   const [OTP, setOTP] = useState<string[]>(Array(length).fill(""));
 
+  // Function to handle moving to next input when one is filled
   function focusToNextInput(target: HTMLElement) {
     const nextElementSibling =
       target.nextElementSibling as HTMLInputElement | null;
@@ -24,6 +26,7 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
     }
   }
 
+  // Function to handle moving to previous input when and input is deleted or navigated using arrow keys
   function focusToPrevInput(target: HTMLElement) {
     const previousElementSibling =
       target.previousElementSibling as HTMLInputElement | null;
@@ -33,19 +36,25 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
     }
   }
 
+  // Function to handle input change
   function handleTextChange(e: ChangeEvent<HTMLInputElement>, id: number) {
     const target = e.target;
     const targetValue = target.value;
+
+    // Check if the input is a valid number
     const isDigit = DIGITS.test(targetValue);
 
+    // If input is not a number return
     if (!isDigit && targetValue !== "") {
       return;
     }
 
+    // If the input is empty space return
     if (targetValue === " ") {
       return;
     }
 
+    // Move to the next input when the input is filled
     if (targetValue.length === 1 && id < length - 1) {
       focusToNextInput(target);
     }

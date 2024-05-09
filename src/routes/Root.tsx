@@ -26,7 +26,7 @@ const Root = () => {
           </footer>
         </div>
 
-        <div className="h-full bg-accionBackgroundImage bg-cover bg-no-repeat pb-4 pr-[30px] pt-8">
+        <div className="h-full bg-accionBackgroundImage bg-cover bg-no-repeat px-[30px] pb-4 pt-8">
           <div className="flex justify-end">
             <img src={accionMfbLogoUrl} alt="logo" className="h-auto w-20" />
           </div>

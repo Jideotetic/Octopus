@@ -18,7 +18,7 @@ export default function ErrorPage() {
 
   return (
     <>
-      <div className="flex h-[calc(100vh-100.21px)] flex-col justify-center gap-4 text-center">
+      <div className="flex h-screen flex-col justify-center gap-4 bg-white text-center">
         <p className="text-5xl font-bold">{errorCode}</p>
         <p>{errorMessage}</p>
         <p>

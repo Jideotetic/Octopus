@@ -1,5 +1,4 @@
 import { LoaderFunctionArgs, redirect } from "react-router-dom";
-import { toast } from "react-toastify";
 
 export default async function loginAction({ request }: LoaderFunctionArgs) {
   const formData = await request.formData();

@@ -28,28 +28,33 @@ const router = createBrowserRouter([
         index: true,
         element: <Login />,
         action: loginAction,
+        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "forgot-password",
         element: <ForgotPassword />,
         action: forgotPasswordAction,
+        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "verify-otp",
         element: <VerifyOTP />,
         action: verifyOTPAction,
+        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "create-new-password",
         element: <CreateNewPassword />,
         action: createNewPasswordAction,
+        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "dashboard",
+        // loader: authenticationLoader,
         element: (
           <div className="flex flex-col items-center justify-center">
             <p>Dashboard</p>

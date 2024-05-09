@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
-import { Form, useRouteLoaderData } from "react-router-dom";
+import { Form, useRouteLoaderData, useNavigation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -92,6 +92,9 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
     toast.success("Email sent successfully");
   }
 
+  const navigation = useNavigation();
+  const busy = navigation.state === "loading";
+
   // function inputOnFocus(e: FocusEvent<HTMLInputElement>) {
   //   const { target } = e;
 
@@ -128,6 +131,7 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
                   inputMode="numeric"
                   autoComplete="one-time-code"
                   value={OTP[id]}
+                  disabled={busy}
                   onChange={(e) => handleTextChange(e, id)}
                   onKeyDown={inputOnKeyDown}
                   // onFocus={inputOnFocus}
@@ -136,7 +140,7 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
                   }
                   pattern="\d{1}"
                   required
-                  className="form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                  className="form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
                 />
               ))}
             </div>
@@ -153,7 +157,8 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
 
             <button
               type="submit"
-              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0]"
+              disabled={busy}
+              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continue
             </button>

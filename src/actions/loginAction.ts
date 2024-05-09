@@ -8,13 +8,7 @@ export default async function loginAction({ request }: LoaderFunctionArgs) {
   const password = formData.get("password");
   const rememberMe = formData.get("remember-me");
 
-  // if (rememberMe === "on") {
-  //   document.cookie = `email=${email}; path=/`;
-  //   document.cookie = `password=${password}; path=/`;
-  // }
-
-    console.log(rememberMe, email, password);
-  toast.success("Login successfully");
+  console.log(rememberMe, email, password);
 
   return redirect("/dashboard");
 }

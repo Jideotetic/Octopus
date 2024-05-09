@@ -1,11 +1,17 @@
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigation } from "react-router-dom";
 import accionMfbLogoUrl from "/accionmfb-logo.png";
 import octopusImageUrl from "../assets/octopus.png";
+import Slider from "../components/Slider";
 
 const Root = () => {
+  const navigation = useNavigation();
+
   return (
     <>
-      <div className="mx-auto grid h-screen w-full max-w-[1440px] grid-cols-rootLayout">
+      {navigation.state === "loading" && <Slider />}
+      <div
+        className="mx-auto grid h-screen w-full max-w-[1440px] grid-cols-rootLayout"
+      >
         <div className="flex h-full flex-col justify-between bg-octopusBackgroundImage bg-cover bg-no-repeat px-[40px] pb-4 pt-8 text-white">
           <header className="flex flex-col gap-1">
             <h1 className="font-arbutus text-4xl">

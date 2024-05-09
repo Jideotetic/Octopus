@@ -14,7 +14,6 @@ export default async function createNewPasswordAction({
   if (newPassword !== confirmPassword) {
     return toast.error("Password do not match!");
   }
-  toast.success("Login successfully");
 
   return redirect("/dashboard");
 }

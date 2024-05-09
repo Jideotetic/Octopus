@@ -1,12 +1,11 @@
-import { useEffect } from "react";
-import { Link, Form } from "react-router-dom";
+import { Link, Form, useNavigation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
-  useEffect(() => {
-    console.log(document.cookie);
-  }, []);
+  const navigation = useNavigation();
+  const busy = navigation.state === "loading";
+
   return (
     <>
       <ToastContainer />
@@ -30,8 +29,9 @@ const Login = () => {
                 id="email"
                 autoComplete="off"
                 required
+                disabled={busy}
                 placeholder="Enter your email"
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -49,7 +49,8 @@ const Login = () => {
                 minLength={8}
                 autoComplete="off"
                 required
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                disabled={busy}
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
             <div className="flex justify-between">
@@ -58,7 +59,8 @@ const Login = () => {
                   type="checkbox"
                   name="remember-me"
                   id="remember-me"
-                  className="focus:ring-none form-checkbox cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407] focus:ring-offset-0 focus:ring-offset-0"
+                  disabled={busy}
+                  className="focus:ring-none form-checkbox cursor-pointer rounded-sm border-neutral-300 text-[#E87407] focus:ring-[#E87407] focus:ring-offset-0 focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50"
                 />
                 <label htmlFor="remember-me" className="text-sm text-[#2A303C]">
                   Remember me
@@ -73,9 +75,10 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0]"
+              disabled={busy}
+              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Sign In
+              {busy ? "Signing In..." : "Sign In"}
             </button>
           </Form>
         </div>

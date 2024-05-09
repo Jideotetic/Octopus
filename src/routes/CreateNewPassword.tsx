@@ -1,8 +1,10 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CreateNewPassword = () => {
+  const navigation = useNavigation();
+  const busy = navigation.state === "loading";
   return (
     <>
       <ToastContainer />
@@ -30,8 +32,9 @@ const CreateNewPassword = () => {
                 placeholder="Enter password"
                 autoComplete="off"
                 required
+                disabled={busy}
                 minLength={8}
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
             <div className="flex flex-col gap-1">
@@ -48,16 +51,18 @@ const CreateNewPassword = () => {
                 placeholder="Re-enter password"
                 autoComplete="off"
                 required
+                disabled={busy}
                 minLength={8}
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0]"
+              disabled={busy}
+              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
-              Sign In
+              {busy ? "Signing In..." : "Sign In"}
             </button>
           </Form>
         </div>

@@ -1,4 +1,4 @@
-import { Form } from "react-router-dom";
+import { Form, useNavigation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -6,6 +6,9 @@ const ForgotPassword = () => {
   function handleContactSupport() {
     toast.info("Contact internal control");
   }
+
+  const navigation = useNavigation();
+  const busy = navigation.state === "loading";
 
   return (
     <>
@@ -33,8 +36,9 @@ const ForgotPassword = () => {
                 id="email"
                 autoComplete="off"
                 required
+                disabled={busy}
                 placeholder="Enter your email"
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400"
+                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
             <div className="text-center">
@@ -48,7 +52,8 @@ const ForgotPassword = () => {
             </div>
             <button
               type="submit"
-              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0]"
+              disabled={busy}
+              className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continue
             </button>

@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
   function handleContactSupport() {
-    toast.info("Kindly contact internal control for support");
+    toast.info("Contact internal control");
   }
 
   return (

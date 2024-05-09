@@ -12,6 +12,8 @@ import verifyOTPAction from "./actions/verifyOTPAction";
 import createNewPasswordAction from "./actions/createNewPasswordAction";
 import loginAction from "./actions/loginAction";
 import authenticationLoader from "./loaders/authenticationLoader";
+import ErrorPage from "./ErrorPage";
+import Spinner from "./components/Spinner";
 
 const router = createBrowserRouter([
   {
@@ -19,26 +21,31 @@ const router = createBrowserRouter([
     id: "root",
     element: <Root />,
     loader: authenticationLoader,
+    errorElement: <ErrorPage />,
     children: [
       {
         index: true,
         element: <Login />,
         action: loginAction,
+        errorElement: <ErrorPage />,
       },
       {
         path: "forgot-password",
         element: <ForgotPassword />,
         action: forgotPasswordAction,
+        errorElement: <ErrorPage />,
       },
       {
         path: "verify-otp",
         element: <VerifyOTP />,
         action: verifyOTPAction,
+        errorElement: <ErrorPage />,
       },
       {
         path: "create-new-password",
         element: <CreateNewPassword />,
         action: createNewPasswordAction,
+        errorElement: <ErrorPage />,
       },
       {
         path: "dashboard",
@@ -55,6 +62,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <RouterProvider router={router} fallbackElement={<Spinner />} />
   </React.StrictMode>,
 );

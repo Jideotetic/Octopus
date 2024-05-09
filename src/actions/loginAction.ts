@@ -1,10 +1,7 @@
 import { LoaderFunctionArgs, redirect } from "react-router-dom";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 
-export default async function loginAction({
-  request,
-}: LoaderFunctionArgs) {
+export default async function loginAction({ request }: LoaderFunctionArgs) {
   const formData = await request.formData();
 
   const email = formData.get("email");
@@ -13,5 +10,5 @@ export default async function loginAction({
   console.log(email, password);
   toast.success("Login successfully");
 
-  return redirect("/");
+  return redirect("/dashboard");
 }

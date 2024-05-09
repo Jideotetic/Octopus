@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
   function handleContactSupport() {
-    toast.info("Kindly contact risk for support");
+    toast.info("Kindly contact internal control for support");
   }
 
   return (
@@ -31,18 +31,21 @@ const ForgotPassword = () => {
                 type="email"
                 name="email"
                 id="email"
+                autoComplete="off"
                 required
                 placeholder="Enter your email"
                 className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />
             </div>
-            <button
-              type="button"
-              onClick={handleContactSupport}
-              className="text-center font-semibold text-[#E87407]"
-            >
-              Contact support
-            </button>
+            <div className="text-center">
+              <button
+                type="button"
+                onClick={handleContactSupport}
+                className="text-center font-semibold text-[#E87407]"
+              >
+                Contact support
+              </button>
+            </div>
             <button
               type="submit"
               className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0]"

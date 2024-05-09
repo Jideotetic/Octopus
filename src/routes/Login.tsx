@@ -43,6 +43,7 @@ const Login = () => {
                 id="password"
                 placeholder="Enter your password"
                 minLength={8}
+                autoComplete="off"
                 required
                 className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400"
               />

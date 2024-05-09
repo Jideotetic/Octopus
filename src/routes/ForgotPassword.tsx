@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   }
 
   const navigation = useNavigation();
-  const busy = navigation.state === "loading";
+  const busy = navigation.state === "submitting";
 
   return (
     <>

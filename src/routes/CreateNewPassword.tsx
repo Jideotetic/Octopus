@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 const CreateNewPassword = () => {
   const navigation = useNavigation();
-  const busy = navigation.state === "loading";
+  const busy = navigation.state === "submitting";
   return (
     <>
       <ToastContainer />

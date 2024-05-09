@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/Root";
 import Login from "./routes/Login";
@@ -11,56 +11,53 @@ import forgotPasswordAction from "./actions/forgotPasswordAction";
 import verifyOTPAction from "./actions/verifyOTPAction";
 import createNewPasswordAction from "./actions/createNewPasswordAction";
 import loginAction from "./actions/loginAction";
-import authenticationLoader from "./loaders/authenticationLoader";
+import rootLoader from "./loaders/rootLoader";
 import ErrorPage from "./ErrorPage";
 import Spinner from "./components/Spinner";
 import GlobalErrorPage from "./GlobalErrorPage";
+import Dashboard from "./routes/Dashboard";
 
 const router = createBrowserRouter([
   {
     path: "/",
     id: "root",
     element: <Root />,
-    loader: authenticationLoader,
+    // loader: rootLoader,
     errorElement: <GlobalErrorPage />,
     children: [
       {
         index: true,
         element: <Login />,
+        loader: rootLoader,
         action: loginAction,
-        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "forgot-password",
         element: <ForgotPassword />,
+        loader: rootLoader,
         action: forgotPasswordAction,
-        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "verify-otp",
         element: <VerifyOTP />,
+        loader: rootLoader,
         action: verifyOTPAction,
-        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "create-new-password",
         element: <CreateNewPassword />,
+        loader: rootLoader,
         action: createNewPasswordAction,
-        // loader: authenticationLoader,
         errorElement: <ErrorPage />,
       },
       {
         path: "dashboard",
-        // loader: authenticationLoader,
-        element: (
-          <div className="flex flex-col items-center justify-center">
-            <p>Dashboard</p>
-            <Link to="/">Log out</Link>
-          </div>
-        ),
+        id: "dashboard",
+        element: <Dashboard />,
+        loader: rootLoader,
       },
     ],
   },

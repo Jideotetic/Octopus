@@ -14,6 +14,7 @@ import loginAction from "./actions/loginAction";
 import authenticationLoader from "./loaders/authenticationLoader";
 import ErrorPage from "./ErrorPage";
 import Spinner from "./components/Spinner";
+import GlobalErrorPage from "./GlobalErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
     id: "root",
     element: <Root />,
     loader: authenticationLoader,
-    errorElement: <ErrorPage />,
+    errorElement: <GlobalErrorPage />,
     children: [
       {
         index: true,

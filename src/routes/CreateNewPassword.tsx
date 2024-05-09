@@ -1,10 +1,16 @@
-import { Form, useNavigation } from "react-router-dom";
+import { useEffect } from "react";
+import { Form, Link, useNavigation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CreateNewPassword = () => {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
+
+  useEffect(() => {
+    localStorage.removeItem("email");
+  }, []);
+
   return (
     <>
       <ToastContainer />
@@ -56,7 +62,6 @@ const CreateNewPassword = () => {
                 className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
               />
             </div>
-
             <button
               type="submit"
               disabled={busy}

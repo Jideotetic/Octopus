@@ -1,5 +1,5 @@
-import { ChangeEvent, KeyboardEvent, useRef, useState } from "react";
-import { Form, useNavigation } from "react-router-dom";
+import { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from "react";
+import { Form, useNavigate, useNavigation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import authProvider from "../auth";
@@ -13,7 +13,6 @@ const DIGITS = new RegExp(/^\d+$/);
 
 const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
   const inputRef = useRef<HTMLInputElement[]>(Array(length).fill(null));
-
   const [OTP, setOTP] = useState<string[]>(Array(length).fill(""));
 
   // Function to handle moving to next input when one is filled
@@ -94,6 +93,19 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
 
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (authProvider.email === "" && localStorage.getItem("email") === null) {
+      navigate("/create-new-password");
+    } else if (authProvider.email === "") {
+      setEmail(localStorage.getItem("email") as string);
+    } else {
+      setEmail(authProvider.email);
+    }
+  }, []);
 
   // function inputOnFocus(e: FocusEvent<HTMLInputElement>) {
   //   const { target } = e;
@@ -118,7 +130,7 @@ const VerifyOTP = ({ length = 6 }: VerifyOTPProps) => {
           </h2>
           <p className="text-sm text-[#2A303C]">
             Enter the 6 digit verification code that was sent to your email:{" "}
-            {authProvider.email}
+            {email}
           </p>
           <Form action="." method="post" className="mt-6 flex flex-col gap-5">
             <div className="flex justify-center">

@@ -10,6 +10,8 @@ export default async function forgotPasswordAction({
 
   authProvider.email = email;
 
+  localStorage.setItem("email", email);
+
   console.log(email);
 
   return redirect("/verify-otp");

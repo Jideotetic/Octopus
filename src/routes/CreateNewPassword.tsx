@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Form, useNavigation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -6,10 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 const CreateNewPassword = () => {
   const navigation = useNavigation();
   const busy = navigation.state === "submitting";
-
-  useEffect(() => {
-    localStorage.removeItem("email");
-  }, []);
 
   return (
     <>

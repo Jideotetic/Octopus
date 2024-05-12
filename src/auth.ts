@@ -1,4 +1,8 @@
-const authProvider = {
+interface AuthProvider {
+  email: string;
+}
+
+const authProvider: AuthProvider = {
   email: "",
 };
 

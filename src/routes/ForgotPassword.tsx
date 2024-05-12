@@ -1,14 +1,32 @@
-import { Form, useNavigation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import { Form, useActionData, useNavigation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ForgotPassword = () => {
+  const navigation = useNavigation();
+  const busy = navigation.state === "submitting";
+  const errors = useActionData() as { email: string };
+  const emailRef = useRef<HTMLInputElement>(null);
+  const [submitCount, setSubmitCount] = useState(0);
+
+  useEffect(() => {
+    if (errors?.email && submitCount > 0) {
+      emailRef.current?.focus();
+    }
+  }, [errors, submitCount]);
+
+  useEffect(() => {
+    emailRef.current?.focus();
+  }, []);
+
+  const handleSubmitCountIncrease = () => {
+    setSubmitCount((prevCount: number) => prevCount + 1);
+  };
+
   function handleContactSupport() {
     toast.info("Contact internal control");
   }
-
-  const navigation = useNavigation();
-  const busy = navigation.state === "submitting";
 
   return (
     <>
@@ -22,7 +40,12 @@ const ForgotPassword = () => {
             Enter the email associated with your account. We will send you a
             verification code
           </p>
-          <Form action="." method="post" className="mt-6 flex flex-col gap-5">
+          <Form
+            action="."
+            noValidate
+            method="post"
+            className="mt-6 flex flex-col gap-5"
+          >
             <div className="flex flex-col gap-1">
               <label
                 htmlFor="email"
@@ -37,9 +60,13 @@ const ForgotPassword = () => {
                 autoComplete="off"
                 required
                 disabled={busy}
+                ref={emailRef}
                 placeholder="Enter your email"
-                className="form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
+                className={`${errors?.email && "border-2 border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
+              <p className="h-1 text-xs text-red-500">
+                {errors?.email && errors.email}
+              </p>
             </div>
             <div className="text-center">
               <button
@@ -53,6 +80,7 @@ const ForgotPassword = () => {
             <button
               type="submit"
               disabled={busy}
+              onClick={handleSubmitCountIncrease}
               className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continue

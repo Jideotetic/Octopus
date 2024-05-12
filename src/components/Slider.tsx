@@ -1,4 +1,4 @@
-export default function Slider() {
+const Slider = () => {
   return (
     <>
       <div className="absolute flex h-[3px] w-[50%]">
@@ -6,4 +6,5 @@ export default function Slider() {
       </div>
     </>
   );
-}
+};
+export default Slider;

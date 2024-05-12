@@ -1,5 +1,10 @@
-import { useEffect, useState } from "react";
-import { Form, useNavigate, useNavigation } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
+import {
+  Form,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import authProvider from "../auth";
@@ -17,6 +22,27 @@ const VerifyOTP = () => {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
+  const errors = useActionData() as { otp: string };
+  const otpInputRef = useRef<HTMLInputElement>(null);
+  const [submitCount, setSubmitCount] = useState(0);
+
+  Array(6)
+    .fill(null)
+    .map(() => {});
+
+  useEffect(() => {
+    if (errors?.otp && submitCount > 0) {
+      otpInputRef.current?.focus();
+    }
+  }, [errors, submitCount]);
+
+  // useEffect(() => {
+  //   otpInputRef.current?.focus();
+  // }, []);
+
+  const handleSubmitCountIncrease = () => {
+    setSubmitCount((prevCount: number) => prevCount + 1);
+  };
 
   useEffect(() => {
     if (authProvider.email === "" && localStorage.getItem("email") === null) {
@@ -41,13 +67,19 @@ const VerifyOTP = () => {
             Enter the 6 digit verification code that was sent to your email:{" "}
             {email}
           </p>
-          <Form action="." method="post" className="mt-6 flex flex-col gap-5">
-            <div className="flex justify-center">
+          <Form
+            action="."
+            noValidate
+            method="post"
+            className="mt-6 flex flex-col gap-5"
+          >
+            <div className="flex flex-col items-center gap-1">
               <OTPInput
                 value={otp}
                 onChange={setOtp}
                 numInputs={6}
                 skipDefaultStyles={true}
+                shouldAutoFocus={true}
                 renderInput={(props, id) => (
                   <input
                     name={id.toString()}
@@ -55,10 +87,13 @@ const VerifyOTP = () => {
                     pattern="\d{1}"
                     required
                     {...props}
-                    className="form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50"
+                    className={`${errors?.otp && "border-2 border-red-400 focus:ring-0"} form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
                   />
                 )}
               />
+              <p className="h-1 text-xs text-red-500">
+                {errors?.otp && errors.otp}
+              </p>
             </div>
 
             <div className="flex justify-center gap-1">
@@ -75,6 +110,7 @@ const VerifyOTP = () => {
             <button
               type="submit"
               disabled={busy}
+              onClick={handleSubmitCountIncrease}
               className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continue

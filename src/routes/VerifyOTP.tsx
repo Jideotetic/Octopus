@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Form,
   useActionData,
@@ -23,26 +23,6 @@ const VerifyOTP = () => {
 
   const [email, setEmail] = useState("");
   const errors = useActionData() as { otp: string };
-  const otpInputRef = useRef<HTMLInputElement>(null);
-  const [submitCount, setSubmitCount] = useState(0);
-
-  Array(6)
-    .fill(null)
-    .map(() => {});
-
-  useEffect(() => {
-    if (errors?.otp && submitCount > 0) {
-      otpInputRef.current?.focus();
-    }
-  }, [errors, submitCount]);
-
-  // useEffect(() => {
-  //   otpInputRef.current?.focus();
-  // }, []);
-
-  const handleSubmitCountIncrease = () => {
-    setSubmitCount((prevCount: number) => prevCount + 1);
-  };
 
   useEffect(() => {
     if (authProvider.email === "" && localStorage.getItem("email") === null) {
@@ -78,13 +58,14 @@ const VerifyOTP = () => {
                 value={otp}
                 onChange={setOtp}
                 numInputs={6}
+                inputType="tel"
                 skipDefaultStyles={true}
                 shouldAutoFocus={true}
                 renderInput={(props, id) => (
                   <input
                     name={id.toString()}
                     disabled={busy}
-                    pattern="\d{1}"
+                    // pattern="\d{1}"
                     required
                     {...props}
                     className={`${errors?.otp && "border-2 border-red-400 focus:ring-0"} form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
@@ -110,7 +91,6 @@ const VerifyOTP = () => {
             <button
               type="submit"
               disabled={busy}
-              onClick={handleSubmitCountIncrease}
               className="w-full rounded-md bg-[#E87407] p-2 text-[#F9F7F0] disabled:cursor-not-allowed disabled:opacity-50"
             >
               Continue

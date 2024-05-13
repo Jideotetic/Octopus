@@ -45,7 +45,7 @@ const VerifyOTP = () => {
           </h2>
           <p className="text-sm text-[#2A303C]">
             Enter the 6 digit verification code that was sent to your email:{" "}
-            {email}
+            <span className="font-extrabold">{email}</span>
           </p>
           <Form
             action="."
@@ -71,7 +71,9 @@ const VerifyOTP = () => {
                   />
                 )}
               />
-              <p className="h-1 text-xs text-red-500">
+              <p
+                className={`${otp.length === 6 ? "invisible" : ""} h-1 text-xs text-red-500`}
+              >
                 {errors?.otp && errors.otp}
               </p>
             </div>

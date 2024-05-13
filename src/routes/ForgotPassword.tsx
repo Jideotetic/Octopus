@@ -62,9 +62,9 @@ const ForgotPassword = () => {
                 disabled={busy}
                 ref={emailRef}
                 placeholder="Enter your email"
-                className={`${errors?.email && "border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${errors?.email && "border-red-400 focus:ring-0"} peer form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
-              <p className="h-1 text-xs text-red-500">
+              <p className="h-1 text-xs text-red-500 peer-valid:invisible">
                 {errors?.email && errors.email}
               </p>
             </div>

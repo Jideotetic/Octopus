@@ -54,7 +54,7 @@ const Login = () => {
                 disabled={busy}
                 ref={emailRef}
                 placeholder="Enter your email"
-                className={`${errors?.email && "border-2 border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${errors?.email && "border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
               <p className="h-1 text-xs text-red-500">
                 {errors?.email && errors.email}
@@ -77,7 +77,7 @@ const Login = () => {
                 required
                 disabled={busy}
                 ref={passwordRef}
-                className={`${errors?.password && "border-2 border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${errors?.password && "border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
               <p className="h-1 text-xs text-red-500">
                 {errors?.password && errors.password}

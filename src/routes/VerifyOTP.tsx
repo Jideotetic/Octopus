@@ -65,10 +65,9 @@ const VerifyOTP = () => {
                   <input
                     name={id.toString()}
                     disabled={busy}
-                    // pattern="\d{1}"
                     required
                     {...props}
-                    className={`${errors?.otp && "border-2 border-red-400 focus:ring-0"} form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm placeholder:text-xs first:rounded-s last:rounded-e valid:border-2 valid:border-[#E87407] valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                    className={`${errors?.otp && "border-red-400 focus:ring-0"} form-input w-12 border-neutral-300 text-center text-lg font-extrabold shadow-sm first:rounded-s last:rounded-e  valid:border-neutral-300 valid:ring-[#E87407] focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
                   />
                 )}
               />

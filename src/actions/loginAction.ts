@@ -17,7 +17,10 @@ export default async function loginAction({ request }: LoaderFunctionArgs) {
     errors.email = "Please enter your email";
   } else if (!email?.includes("@")) {
     errors.email = "Not a valid email";
-  } else if (email.indexOf("@") === email.length - 1) {
+  } else if (
+    email.indexOf("@") === email.length - 1 ||
+    email.indexOf(".") === email.length - 1
+  ) {
     errors.email = "Not a valid email";
   }
 

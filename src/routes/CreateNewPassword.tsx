@@ -68,9 +68,9 @@ const CreateNewPassword = () => {
                 ref={newPasswordRef}
                 disabled={busy}
                 minLength={8}
-                className={`${errors?.newPassword && "border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${errors?.newPassword && "border-red-400 focus:ring-0"} peer form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
-              <p className="h-1 text-xs text-red-500">
+              <p className="h-1 text-xs text-red-500 peer-valid:invisible">
                 {errors?.newPassword && errors.newPassword}
               </p>
             </div>
@@ -91,12 +91,13 @@ const CreateNewPassword = () => {
                 disabled={busy}
                 ref={confirmPasswordRef}
                 minLength={8}
-                className={`${errors?.confirmPassword && "border-red-400 focus:ring-0"} form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
+                className={`${errors?.confirmPassword && "border-red-400 focus:ring-0"} peer form-input rounded-md border-neutral-300 shadow-sm placeholder:text-xs valid:border-neutral-300 focus:border-[#E87407] focus:outline-none focus:ring-1 focus:ring-[#E87407] placeholder-shown:focus:border-red-400 placeholder-shown:focus:ring-red-400 focus:invalid:border-red-400 focus:invalid:ring-red-400 disabled:cursor-not-allowed disabled:opacity-50`}
               />
+              <p className="h-1 text-xs text-red-500 peer-valid:invisible">
+                {errors?.confirmPassword && errors.confirmPassword}
+              </p>
               <p className="h-1 text-xs text-red-500">
-                {errors?.confirmPassword
-                  ? errors.confirmPassword
-                  : errors?.passwordMatch}
+                {errors?.passwordMatch && errors?.passwordMatch}
               </p>
             </div>
             <button

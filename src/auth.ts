@@ -7,5 +7,3 @@ const authProvider: AuthProvider = {
 };
 
 export default authProvider;
-// 
-// 
